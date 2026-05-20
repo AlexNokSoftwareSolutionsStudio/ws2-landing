@@ -1,0 +1,7 @@
+.btn-primary {
+  @apply px-6 py-3 bg-black text-white rounded-xl hover:bg-gray-800 transition;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 border border-gray-300 rounded-xl hover:bg-gray-100 transition;
+}
