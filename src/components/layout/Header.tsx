@@ -6,7 +6,7 @@ export default function Header() {
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur border-b z-50">
+    <header className="fixed top-0 left-0 w-full bg-white border-b z-50">
       <div className="max-w-6xl mx-auto flex items-center justify-between p-4">
         {/* Logo */}
         <div className="font-bold">WS2 Landing</div>
@@ -37,13 +37,21 @@ export default function Header() {
 
       {/* Mobile menu overlay */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 bg-black/40">
-          <div className="bg-white w-3/4 h-full p-6">
+        <div className="md:hidden fixed inset-0 z-50">
+          {/* Backdrop (solid dark layer) */}
+          <div className="absolute inset-0 bg-black" onClick={toggleMenu} />
+
+          {/* Drawer (fully opaque panel) */}
+          <div className="absolute left-0 top-0 h-full w-[80%] max-w-sm bg-white shadow-2xl z-50">
+            {/* Header */}
             <div className="flex justify-between mb-8">
               <span className="font-bold">Menu</span>
-              <button onClick={toggleMenu}>✕</button>
+              <button onClick={toggleMenu} className="text-xl">
+                ✕
+              </button>
             </div>
 
+            {/* Navigation */}
             <nav className="flex flex-col gap-4 text-lg">
               <a href="#hero" onClick={toggleMenu}>
                 Home
